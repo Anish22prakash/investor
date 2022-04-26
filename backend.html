@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-collection</title>
+   <style>
+     #table{
+         width: 50%;
+         height: auto;
+         border: 1px solid;
+        margin: auto;
+     }
+     input,submit{
+         display: block;
+         margin: auto;
+         margin-top: 2%;
+         padding: 5px 20px 5px 20px;
+     }
+   </style>
+</head>
+<body>
+    <div id="table">
+        <form id="newtab">
+           <input type="text" id="image" placeholder="enter the url">
+           <input type="text" id="name" placeholder="enter the name">
+           <input type="text" id="position" placeholder="enter the position">
+           <input type="text" id="logo" placeholder="enter the logo url">
+           <input type="submit" >
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+      
+    document.querySelector("#newtab").addEventListener("submit",myfunction);
+
+   var array= JSON.parse(localStorage.getItem("investordata")) || []
+   
+ 
+    function myfunction(){
+     event.preventDefault();
+
+     var data={
+         inimag:newtab.image.value,
+         inname:newtab.name.value,
+         inpost:newtab.position.value,
+         inlogo:newtab.logo.value
+     }
+     array.push(data)
+     
+     localStorage.setItem("investordata",JSON.stringify(array))
+    }
+
+</script>
